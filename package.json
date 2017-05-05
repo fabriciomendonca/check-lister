@@ -1,0 +1,57 @@
+{
+  "name": "check-lister",
+  "version": "1.0.0",
+  "description": "A simple React + Redux check list app.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "babel-core": "^6.24.1",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "jest": "^19.0.2",
+    "react": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "react-test-renderer": "^15.5.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "jest": "^19.0.2",
+    "node-sass": "^4.5.2",
+    "react-test-renderer": "^15.5.4",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fabriciomendonca/check-lister.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fabriciomendonca/check-lister/issues"
+  },
+  "homepage": "https://github.com/fabriciomendonca/check-lister#readme"
+}
