@@ -8,16 +8,23 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
+// Components
+import Home from './components/home';
+
 import rootReducer from './reducers/root-reducer';
 
-const store = applyMiddleware(thunk)(createStore);
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store(rootReducer)}>
+      <Provider store={store}>
         <Router>
-          <h1>Check lister</h1>
+          <div>
+            <h1>Check lister</h1>
+            <Route extact path="/" component={Home}></Route>
+          </div>
         </Router>
       </Provider>
     );

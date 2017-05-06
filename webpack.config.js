@@ -9,7 +9,10 @@ const PATHS = {
 };
 
 const config = {
-  entry: path.join(PATHS.src, '/index.js'),
+  entry: [
+    'babel-polyfill',
+    path.join(PATHS.src, '/index.js')
+  ],
 
   output: {
     filename: 'bundle.js',
