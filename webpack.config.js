@@ -38,7 +38,9 @@ const config = {
 
   devServer: {
     port: 3000,
-    publicPath: '/'
+    publicPath: '/',
+    inline: true,
+    historyApiFallback: true
   },
 
   plugins: [

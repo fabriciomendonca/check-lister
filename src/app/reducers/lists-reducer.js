@@ -1,12 +1,20 @@
 import {
-  FETCH_LISTS
+  FETCH_LISTS,
+  FETCH_LIST
 } from '../actions/types.js';
 
-export default function (state = [], action) {
+export default (state = [], action) => {
   switch (action.type) {
     case FETCH_LISTS:
-      return action.payload;
+      return {
+        lists: action.payload
+      };
+    case FETCH_LIST:
+      return {
+        ...sate,
+        selected: action.payload
+      };
   }
 
   return state;
-}
+};

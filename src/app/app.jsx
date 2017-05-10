@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
   Link
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -9,7 +10,9 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 // Components
-import Home from './components/home';
+import Home from './containers/home';
+import Checklists from './containers/checklists';
+import Checklist from './containers/checklist';
 
 import rootReducer from './reducers/root-reducer';
 
@@ -23,7 +26,12 @@ class App extends Component {
         <Router>
           <div>
             <h1>Check lister</h1>
-            <Route extact path="/" component={Home}></Route>
+            <Link to="/check-lists">View all checklists</Link>
+            <Switch>
+              <Route path="/check-lists/:id" component={Checklist}></Route>
+              <Route path="/check-lists" component={Checklists}></Route>
+              <Route path="/" component={Home}></Route>
+            </Switch>
           </div>
         </Router>
       </Provider>
