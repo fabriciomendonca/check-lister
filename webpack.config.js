@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PATHS = {
   dist: path.join(__dirname, '/dist'),
   src: path.join(__dirname, '/src'),
+  scss: path.join(__dirname, '/src/assets/scss'),
+  fonts: path.join(__dirname, '/src/assets/fonts'),
   test: path.join(__dirname, '/test')
 };
 
@@ -16,7 +18,8 @@ const config = {
 
   output: {
     filename: 'bundle.js',
-    path: PATHS.dist
+    path: PATHS.dist,
+    publicPath: '/'
   },
 
   resolve: {
@@ -27,11 +30,18 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: [{loader: 'babel-loader'}]
+        use: 'babel-loader',
+        include: PATHS.src
       },
       {
         test: /\.s?css$/,
-        use: 'style-loader!css-loader!sass-loader'
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        include: PATHS.scss
+      },
+      {
+        test: /\.(woff2?)$/i,
+        use: 'url-loader?limit=10000&name=[name].[ext]&publicPath=/&outputPath=assets/fonts/',
+        include: PATHS.fonts
       }
     ]
   },

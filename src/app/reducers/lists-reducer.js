@@ -11,7 +11,7 @@ export default (state = [], action) => {
       };
     case FETCH_LIST:
       return {
-        ...sate,
+        ...state,
         selected: action.payload
       };
   }

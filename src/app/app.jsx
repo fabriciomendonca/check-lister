@@ -10,6 +10,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 // Components
+import NavBar from './components/navbar';
 import Home from './containers/home';
 import Checklists from './containers/checklists';
 import Checklist from './containers/checklist';
@@ -24,12 +25,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div>
-            <h1>Check lister</h1>
-            <Link to="/check-lists">View all checklists</Link>
+          <div className="d-flex flex-column w-100 align-items-center full-width">
+            <NavBar />
+            
             <Switch>
-              <Route path="/check-lists/:id" component={Checklist}></Route>
-              <Route path="/check-lists" component={Checklists}></Route>
+              <Route exact path="/check-lists/:id" component={Checklist}></Route>
+              <Route exact path="/check-lists" component={Checklists}></Route>
               <Route path="/" component={Home}></Route>
             </Switch>
           </div>

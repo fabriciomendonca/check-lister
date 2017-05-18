@@ -17,8 +17,8 @@ class Checklists extends Component {
     }
 
     return (
-      <div className="checklists">
-        <h2>All checklists</h2>
+      <div className="checklists d-flex flex-column w-100">
+        <h2 className="m-3">All checklists</h2>
         {lists.map(this.renderLists)}
       </div>
     );
@@ -26,8 +26,10 @@ class Checklists extends Component {
 
   renderLists(list) {
     return (
-      <div key={list._id}>
-        <Link to={`/check-lists/${list._id}`}>{list.name || ''}</Link>
+      <div className="list-group m-3" key={list._id}>
+        <Link to={`/check-lists/${list._id}`} className="list-group-item list-group-item-action">
+          <h5 className="mb-0">{list.name || ''}</h5>
+        </Link>
       </div>
     );
   }

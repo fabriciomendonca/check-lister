@@ -8,21 +8,22 @@ import List from '../components/list';
 
 class CheckList extends Component {
   componentDidMount() {
-    this.props.fetchList(this.props.match.id);
+    this.props.fetchList(this.props.match.params.id);
   }
 
   render() {
+    if (!this.props.list) {
+      return null;
+    }
     return (
-      <div className="check-list">
-        <List data={this.props.list} />
-      </div>
+      <List data={this.props.list} />
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    list: state.list
+    list: state.lists.selected
   };
 }
 
