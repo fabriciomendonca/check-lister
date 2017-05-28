@@ -6,10 +6,10 @@ import {
   UNAUTH_USER
 } from './types';
 
-export const signup = ({email, password}) => {
+export const signinUp = ({email, password}, type) => {
   return async (dispatch) => {
     try {
-      const user = await axios.post(`${API_URL}/users`, { email, password });
+      let user = await axios.post(`${API_URL}/users${type === 'Signin' ? '/signin' : ''}`, { email, password });
       localStorage.setItem('user', JSON.stringify(user.data));
 
       dispatch({

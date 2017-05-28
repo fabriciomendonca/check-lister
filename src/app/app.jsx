@@ -14,7 +14,7 @@ import requireAuth from './hoc/require-auth';
 // Components
 import NavBar from './components/navbar';
 import Home from './containers/home';
-import Signup from './containers/signup';
+import SigninUp from './containers/signinUp';
 import Signout from './containers/signout';
 import Checklists from './containers/checklists';
 import Checklist from './containers/checklist';
@@ -28,8 +28,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/check-lists/:id" component={requireAuth(Checklist)}></Route>
           <Route exact path="/check-lists" component={requireAuth(Checklists)}></Route>
+          <Route exact path="/signin" render={() =>(
+            !this.props.authenticated ? <SigninUp type="Signin" /> : <Redirect to="/check-lists" />
+          )}/>
           <Route exact path="/signup" render={() =>(
-            !this.props.authenticated ? <Signup /> : <Redirect to="/check-lists" />
+            !this.props.authenticated ? <SigninUp type="Signup" /> : <Redirect to="/check-lists" />
           )}/>
           <Route exact path="/signout" render={() =>(
             this.props.authenticated ? <Signout /> : <Redirect to="/" />

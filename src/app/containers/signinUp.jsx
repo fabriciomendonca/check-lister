@@ -7,16 +7,16 @@ import * as actions from '../actions/user-actions';
 
 import InputField from '../components/input-field';
 
-class Signup extends Component {
+class SigninUp extends Component {
   handleFormSubmit (formProps) {
-    this.props.signup(formProps);
+    this.props.signinUp(formProps, this.props.type);
   }
 
   render () {
     const {handleSubmit} = this.props;
     return (
       <div className="signup content">
-        <h2>Sign up</h2>
+        <h2>{this.props.type}</h2>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <Field
               name="email"
@@ -28,21 +28,26 @@ class Signup extends Component {
               title="Password"
               component={InputField}
               type="password" />
-          <Field
+          {
+            this.props.type === 'Signup' ? <Field
               name="passwordConfirm"
               title="Password confirm"
               component={InputField}
               type="password" />
-          <button action="submit" className="btn btn-primary">Signup</button>
+              :
+              ''
+          }
+          <button action="submit" className="btn btn-primary">{this.props.type}</button>
         </form>
       </div> 
     )
   }
 }
 
-const validate = (formProps) => {
+const validate = (formProps, props) => {
   const errors = {};
-  if (formProps.password !== formProps.passwordConfirm) {
+  
+  if (props.type === 'signup' && formProps.password !== formProps.passwordConfirm) {
     errors.password = 'Passwords must match';
   }
 
@@ -56,6 +61,6 @@ const validate = (formProps) => {
 const Combined = reduxForm({
   form: 'signup',
   validate
-})(Signup);
+})(SigninUp);
 
 export default withRouter(connect(null, actions)(Combined));
