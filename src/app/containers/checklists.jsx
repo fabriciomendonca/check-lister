@@ -17,7 +17,7 @@ class Checklists extends Component {
     }
 
     return (
-      <div className="checklists d-flex flex-column w-100">
+      <div className="checklists content d-flex flex-column">
         <h2 className="m-3">All checklists</h2>
         {lists.map(this.renderLists)}
       </div>

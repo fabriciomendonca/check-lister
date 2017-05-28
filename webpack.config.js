@@ -7,6 +7,7 @@ const PATHS = {
   src: path.join(__dirname, '/src'),
   scss: path.join(__dirname, '/src/assets/scss'),
   fonts: path.join(__dirname, '/src/assets/fonts'),
+  img: path.join(__dirname, '/src/assets/img'),
   test: path.join(__dirname, '/test')
 };
 
@@ -39,6 +40,11 @@ const config = {
         include: PATHS.scss
       },
       {
+        test: /\.(jpe?g|svg|gif|png)$/,
+        use: 'url-loader?limit=25000&name=[name].[ext]&publicPath=/&outputPath=assets/img/',
+        include: PATHS.img
+      },
+      {
         test: /\.(woff2?)$/i,
         use: 'url-loader?limit=10000&name=[name].[ext]&publicPath=/&outputPath=assets/fonts/',
         include: PATHS.fonts
@@ -56,6 +62,14 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(PATHS.src, '/index.ejs')
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(process.env.API_URL || null)
     })
   ]
 };

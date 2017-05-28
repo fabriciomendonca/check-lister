@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 
 import * as actions from '../actions/lists-actions';
 
-import List from '../components/list';
+import InputField from '../components/input-field';
 
 class CheckList extends Component {
   componentDidMount() {
@@ -15,8 +16,20 @@ class CheckList extends Component {
     if (!this.props.list) {
       return null;
     }
+
     return (
-      <List data={this.props.list} />
+      <div className="checklist content d-flex flex-column">
+          <form>
+            <Field
+              type="text"
+              name="new_task"
+              title="New task"
+              component={InputField}
+              className="d-flex flex-row flex" />
+            <button className="btn btn-primary">Add</button>
+          </form>
+          <h3 className="my-3 mx-0">{this.props.list.name}</h3>
+      </div>
     );
   }
 }
@@ -27,4 +40,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, actions)(CheckList));
+const Composed = reduxForm({
+  form: 'newTask'
+})(CheckList);
+export default withRouter(connect(mapStateToProps, actions)(Composed));

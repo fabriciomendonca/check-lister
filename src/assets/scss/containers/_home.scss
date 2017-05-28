@@ -1,0 +1,33 @@
+.home {
+  background-attachment: fixed;
+  background-image: url('../img/checklist-2077018_1920.jpg');
+  background-position: center;
+  background-size: cover;
+
+  height: 100vh;
+  padding-top: 0;
+  width: 100vw;
+
+  .home__content {
+    background-color: rgba(0, 0, 0, 0.55);
+    min-height: 100%;
+
+    .home__text {
+      color: $green;
+      font-size: 4rem;
+      font-weight: bold;
+    }
+
+    .home__button {
+      background: $pink;
+      color: $white;
+      cursor: pointer;
+      font-size: 2rem;
+      padding: 20px 50px;
+
+      &:hover {
+        background: $purple;
+      }
+    }
+  }
+}
