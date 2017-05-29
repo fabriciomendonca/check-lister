@@ -11,14 +11,18 @@ const PATHS = {
   test: path.join(__dirname, '/test')
 };
 
+const vendors = ['webpack/hot/only-dev-server', 'babel-polyfill', 'axios', 'react', 'react-dom', 'redux', 'redux-thunk', 'redux-form', 'react-router', 'react-router-dom', 'validator']
+
 const config = {
-  entry: [
-    'babel-polyfill',
-    path.join(PATHS.src, '/index.js')
-  ],
+  entry: {
+    bundle: [
+      path.join(PATHS.src, '/index.js')
+    ],
+    vendor: vendors
+  },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[hash].js',
     path: PATHS.dist,
     publicPath: '/'
   },
@@ -70,6 +74,12 @@ const config = {
 
     new webpack.DefinePlugin({
       'process.env.API_URL': JSON.stringify(process.env.API_URL || null)
+    }),
+
+    new webpack.HotModuleReplacementPlugin(),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor', 'manifest']
     })
   ]
 };

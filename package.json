@@ -8,6 +8,9 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "express": "^4.15.3",
+    "express-history-api-fallback": "^2.2.1",
+    "helmet": "^3.6.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
@@ -44,6 +47,7 @@
     "dev": "webpack-dev-server --hot",
     "local:dev": "export API_URL=http://localhost:3050 && webpack-dev-server --hot",
     "build": "webpack -p",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
