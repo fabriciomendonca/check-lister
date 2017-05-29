@@ -1,0 +1,40 @@
+.checklist {
+
+  .complete-task {
+    background: $purple;
+    cursor: pointer;
+    display: inline-block;
+    height: 1.5rem;
+    margin-right: 16px;
+    width: 1.5rem;
+
+    i {
+      color: $white;
+      display: none;
+    }
+
+    &:hover {
+      i {
+        display: inline-block;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .completed {
+    background: $green;
+    opacity: 0.25;
+
+    .complete-task {
+      i {
+        display: inline-block;
+      }
+
+      &:hover {
+        i {
+          display: none;
+        }
+      }
+    }
+  }
+}
